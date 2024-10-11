@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# 廣東話真心話生成器
+https://heilcheng.github.io/Truth-or-Dare-Canto/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 簡介
 
-## Available Scripts
+呢個係一個用 React 整嘅簡單真心話問題生成器。每次你撳「生成問題」按鈕時，應用程式會隨機產生一條搞笑問題。User仲可以添加自己嘅問題，令遊戲更加多元化。呢個項目非常適合用嚟同朋友玩，增加聚會嘅氣氛同樂趣。
 
-In the project directory, you can run:
+## 功能
 
-### `npm start`
+隨機問題生成：應用程式內置咗約100條問題，會隨機生成。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+添加自定問題：User可以自由輸入自己嘅問題，並添加到問題列表入面。
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+即時更新：當User添加新問題後，問題會即時加入個List，可以即刻Gen出嚟玩。
 
-### `npm test`
+# Truth Or Dare Generator
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Overview
 
-### `npm run build`
+This is a simple Truth or Dare generator web app in Cantonese, built with React. The app generates a fun, random question every time you click the "Generate" button, and users can also add their own questions. This project is a perfect way to break the ice with friends and make your gatherings more entertaining.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Generate Random Questions: The app has 100 built-in funny and quirky questions to generate at random.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Add New Questions: Users can input their own custom questions which will be added to the existing pool.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Real-time Updates: When a new question is added, it instantly appears in the list and can be generated.
