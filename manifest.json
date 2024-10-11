@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "真心話問題",
+  "name": "廣東話真心話問題生成器",
   "icons": [
     {
       "src": "favicon.ico",
