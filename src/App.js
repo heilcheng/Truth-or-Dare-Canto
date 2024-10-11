@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Input, Card, CardContent, ThemeProvider, createTheme } from '@mui/material';
+import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 
 const darkTheme = createTheme({
   palette: {
