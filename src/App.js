@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Input, Card, CardContent } from '@mui/material';
 
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#000000',
+    },
+    background: {
+      default: '#121212',
+      paper: '#1E1E1E',
+    },
+  },
+});
 
 const initialQuestions = [
   "如果你係一種食物，你會係咩？點解？",
@@ -90,10 +102,10 @@ const initialQuestions = [
   "你覺得喺戀愛入面最重要嘅係咩？",
   "你試過暗戀過一個完全唔識嘅陌生人？",
   "你有冇試過為咗戀愛而放棄朋友？",
-  "你覺得自己係咪一個好容易會妒忌人地嘅人？"
+  "你覺得自己係咪一個好容易會妒忌人地嘅人？",
   "你最癲嘅生日慶祝係點？",
   "你試過鍾意一個人幾耐先放手？",
-  "你覺得有咩嘢係你應該話俾屋企人知但一直唔敢講？"
+  "你覺得有咩嘢係你應該話俾屋企人知但一直唔敢講？",
   "你有冇試過大庭廣眾之下認錯人？最尷尬嘅一次係點？",
   "你覺得自己嘅初戀/暗戀係幸福定係災難？",
   "你覺得自己最搞笑嘅一個癖好係咩？",
@@ -103,7 +115,7 @@ const initialQuestions = [
   "你有冇試過懷疑自己係唔係同性戀？",
   "你有冇試過瞞住大家做咗一件自己覺得好有趣嘅事？",
   "你試過講過最假嘅藉口係咩？",
-  "你覺得自己最想改變嘅一個缺點係咩？"
+  "你覺得自己最想改變嘅一個缺點係咩？",
 
 ];
 
@@ -113,7 +125,6 @@ const TruthOrDareGenerator = () => {
   const [newQuestion, setNewQuestion] = useState("");
 
   useEffect(() => {
-    // In a real application, you would fetch questions from a database here
     setQuestions(initialQuestions);
   }, []);
 
@@ -126,40 +137,48 @@ const TruthOrDareGenerator = () => {
     if (newQuestion.trim() !== "") {
       setQuestions([...questions, newQuestion]);
       setNewQuestion("");
-      // In a real application, you would also save this to the database
     }
   };
 
   return (
-    <Card sx={{ maxWidth: 400, margin: 'auto', marginTop: 2 }}>
-      <CardContent>
-        <h2>廣東話真心話問題生成器</h2>
-        <Button 
-          variant="contained" 
-          onClick={generateQuestion}
-          fullWidth
-          sx={{ marginBottom: 2 }}
-        >
-          生成問題
-        </Button>
-        
-        {currentQuestion && (
-          <Card variant="outlined" sx={{ marginBottom: 2, padding: 2 }}>
-            <p>{currentQuestion}</p>
-          </Card>
-        )}
-        
-        <div style={{ display: 'flex', gap: '8px' }}>
-          <Input
-            value={newQuestion}
-            onChange={(e) => setNewQuestion(e.target.value)}
-            placeholder="輸入新問題"
+    <ThemeProvider theme={darkTheme}>
+      <Card sx={{ maxWidth: 400, margin: 'auto', marginTop: 2, backgroundColor: 'background.paper' }}>
+        <CardContent>
+          <h2 style={{ color: 'white' }}>廣東話真心話問題生成器</h2>
+          <Button 
+            variant="contained" 
+            onClick={generateQuestion}
             fullWidth
-          />
-          <Button variant="contained" onClick={addNewQuestion}>添加</Button>
-        </div>
-      </CardContent>
-    </Card>
+            sx={{ marginBottom: 2, backgroundColor: 'black', '&:hover': { backgroundColor: '#333' } }}
+          >
+            生成問題
+          </Button>
+          
+          {currentQuestion && (
+            <Card variant="outlined" sx={{ marginBottom: 2, padding: 2, backgroundColor: '#2C2C2C', color: 'white' }}>
+              <p>{currentQuestion}</p>
+            </Card>
+          )}
+          
+          <div style={{ display: 'flex', gap: '8px' }}>
+            <Input
+              value={newQuestion}
+              onChange={(e) => setNewQuestion(e.target.value)}
+              placeholder="輸入新問題"
+              fullWidth
+              sx={{ color: 'white', '&:before': { borderBottomColor: 'white' } }}
+            />
+            <Button 
+              variant="contained" 
+              onClick={addNewQuestion}
+              sx={{ backgroundColor: 'black', '&:hover': { backgroundColor: '#333' } }}
+            >
+              添加
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    </ThemeProvider>
   );
 };
 
