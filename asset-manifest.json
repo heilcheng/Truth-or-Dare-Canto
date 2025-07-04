@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Truth-or-Dare-Canto/static/css/main.0530dcb6.css",
-    "main.js": "/Truth-or-Dare-Canto/static/js/main.0ff53b17.js",
+    "main.css": "/Truth-or-Dare-Canto/static/css/main.e6c13ad2.css",
+    "main.js": "/Truth-or-Dare-Canto/static/js/main.67a8a0e8.js",
     "static/js/453.ceb32a49.chunk.js": "/Truth-or-Dare-Canto/static/js/453.ceb32a49.chunk.js",
     "index.html": "/Truth-or-Dare-Canto/index.html",
-    "main.0530dcb6.css.map": "/Truth-or-Dare-Canto/static/css/main.0530dcb6.css.map",
-    "main.0ff53b17.js.map": "/Truth-or-Dare-Canto/static/js/main.0ff53b17.js.map",
+    "main.e6c13ad2.css.map": "/Truth-or-Dare-Canto/static/css/main.e6c13ad2.css.map",
+    "main.67a8a0e8.js.map": "/Truth-or-Dare-Canto/static/js/main.67a8a0e8.js.map",
     "453.ceb32a49.chunk.js.map": "/Truth-or-Dare-Canto/static/js/453.ceb32a49.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0530dcb6.css",
-    "static/js/main.0ff53b17.js"
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.67a8a0e8.js"
   ]
 }
