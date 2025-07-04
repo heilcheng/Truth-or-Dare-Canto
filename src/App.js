@@ -233,7 +233,7 @@ const TruthOrDareGenerator = () => {
               flexDirection: { xs: 'column', sm: 'row' },
               justifyContent: 'space-between', 
               alignItems: { xs: 'center', sm: 'center' }, 
-              marginBottom: { xs: 2.5, sm: 5 },
+              marginBottom: { xs: 4, sm: 6 },
               gap: { xs: 2, sm: 0 }
             }}>
               <div style={{ textAlign: { xs: 'center', sm: 'left' } }}>
@@ -328,8 +328,9 @@ const TruthOrDareGenerator = () => {
               onClick={generateQuestion}
               fullWidth
               disabled={loading}
+              data-testid="generate-button"
               sx={{ 
-                marginBottom: 3,
+                marginBottom: 4,
                 padding: { xs: 1.5, sm: 2.5 },
                 fontSize: { xs: '1rem', sm: '1.2rem' },
                 fontWeight: 600,

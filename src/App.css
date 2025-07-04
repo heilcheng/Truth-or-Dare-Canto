@@ -422,4 +422,15 @@ html {
     background-color: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
   }
+  
+  /* Ensure proper spacing between header and generate button */
+  .MuiCardContent-root > div:first-child {
+    margin-bottom: 32px !important;
+  }
+  
+  /* Generate button spacing */
+  .MuiButton-root[data-testid="generate-button"] {
+    margin-top: 16px !important;
+    margin-bottom: 24px !important;
+  }
 }
