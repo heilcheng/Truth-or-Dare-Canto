@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Input, Card, CardContent, ThemeProvider, createTheme, Switch, FormControlLabel, Box } from '@mui/material';
-import axios from 'axios';
+import mongodbService from './services/mongodbService';
 
 const getTheme = (mode) => createTheme({
   palette: {
@@ -15,6 +15,20 @@ const getTheme = (mode) => createTheme({
   },
 });
 
+// Fallback questions if MongoDB is not available
+const fallbackQuestions = [
+  "如果你係一種食物，你會係咩？點解？",
+  "你最奇怪嘅夢係咩？",
+  "如果你可以變成任何卡通人物，你會揀邊個？",
+  "你最尷尬嘅舞步係咩？依家示範比大家睇！",
+  "如果你嘅寵物識講嘢，你覺得佢會話咩俾你聽？",
+  "你剪過最核突嘅髮型係點樣？有相睇吓嗎？",
+  "如果你係一個超級英雄，你嘅超能力會係咩？你嘅弱點呢？",
+  "你最鍾意嘅怪異食物配搭係咩？",
+  "如果你一世只可以著一隻顏色嘅衫，你會揀咩色？",
+  "你最後悔嘅飲醉酒經歷係咩？"
+];
+
 const TruthOrDareGenerator = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState("");
@@ -22,8 +36,9 @@ const TruthOrDareGenerator = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [themeMode, setThemeMode] = useState('dark');
+  const [usingMongoDB, setUsingMongoDB] = useState(false);
 
-  // Fetch questions from the API when component mounts
+  // Fetch questions from MongoDB or fallback
   useEffect(() => {
     fetchQuestions();
   }, []);
@@ -31,13 +46,29 @@ const TruthOrDareGenerator = () => {
   const fetchQuestions = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5001/questions/');
-      const questionTexts = response.data.map(question => question.text);
-      setQuestions(questionTexts);
-      setError(null);
+      
+      // Try to connect to MongoDB Atlas
+      const mongoQuestions = await mongodbService.getAllQuestions();
+      
+      if (mongoQuestions && mongoQuestions.length > 0) {
+        const questionTexts = mongoQuestions.map(question => question.text);
+        setQuestions(questionTexts);
+        setUsingMongoDB(true);
+        setError(null);
+        console.log('Using MongoDB Atlas');
+      } else {
+        // If no questions in MongoDB, seed them
+        await mongodbService.seedQuestions(fallbackQuestions);
+        setQuestions(fallbackQuestions);
+        setUsingMongoDB(true);
+        setError(null);
+        console.log('Seeded questions to MongoDB Atlas');
+      }
     } catch (err) {
-      console.error('Error fetching questions:', err);
-      setError('Failed to load questions. Please check if the server is running.');
+      console.log('MongoDB not available, using fallback questions');
+      setQuestions(fallbackQuestions);
+      setUsingMongoDB(false);
+      setError('MongoDB not configured. Using local questions. To enable database, update src/config/db.js');
     } finally {
       setLoading(false);
     }
@@ -55,11 +86,15 @@ const TruthOrDareGenerator = () => {
   const addNewQuestion = async () => {
     if (newQuestion.trim() !== "") {
       try {
-        const response = await axios.post('http://localhost:5001/questions/add', {
-          text: newQuestion.trim()
-        });
-        // Add the new question to the local state
-        setQuestions([...questions, response.data.text]);
+        if (usingMongoDB) {
+          // Add to MongoDB
+          const response = await mongodbService.addQuestion(newQuestion.trim());
+          setQuestions([...questions, response.text]);
+        } else {
+          // Add to local state only
+          setQuestions([...questions, newQuestion.trim()]);
+        }
+        
         setNewQuestion("");
         setError(null);
       } catch (err) {
@@ -89,12 +124,15 @@ const TruthOrDareGenerator = () => {
                 sx={{ marginLeft: 1, color: themeMode === 'dark' ? 'white' : '#222' }}
               />
             </div>
+            
             {loading && (
               <p style={{ color: themeMode === 'dark' ? 'white' : '#222', textAlign: 'center' }}>Loading questions...</p>
             )}
+            
             {error && (
               <p style={{ color: '#ff6b6b', textAlign: 'center', fontSize: '14px' }}>{error}</p>
             )}
+            
             <Button
               variant="contained"
               onClick={generateQuestion}
@@ -104,11 +142,13 @@ const TruthOrDareGenerator = () => {
             >
               生成問題
             </Button>
+            
             {currentQuestion && (
               <Card variant="outlined" sx={{ marginBottom: 2, padding: 2, backgroundColor: themeMode === 'dark' ? '#2C2C2C' : '#f5f5f5', color: themeMode === 'dark' ? 'white' : '#222' }}>
                 <p>{currentQuestion}</p>
               </Card>
             )}
+            
             <div style={{ display: 'flex', gap: '8px' }}>
               <Input
                 value={newQuestion}
@@ -127,8 +167,9 @@ const TruthOrDareGenerator = () => {
                 添加
               </Button>
             </div>
+            
             <p style={{ color: themeMode === 'dark' ? 'white' : '#222', fontSize: '12px', textAlign: 'center', marginTop: '10px' }}>
-              Total Questions: {questions.length}
+              Total Questions: {questions.length} {usingMongoDB ? '(MongoDB)' : '(Local)'}
             </p>
           </CardContent>
         </Card>
