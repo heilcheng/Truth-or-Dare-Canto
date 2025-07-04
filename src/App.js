@@ -203,7 +203,7 @@ const TruthOrDareGenerator = () => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: { xs: 2, sm: 3, md: 4 },
+          padding: { xs: 1, sm: 3, md: 4 },
           boxSizing: 'border-box',
           position: 'relative'
         }}
@@ -212,18 +212,20 @@ const TruthOrDareGenerator = () => {
           sx={{ 
             width: '100%',
             maxWidth: { xs: '100%', sm: 450, md: 500 },
+            maxHeight: { xs: '95vh', sm: 'auto' },
             backgroundColor: 'background.paper',
-            borderRadius: { xs: 3, sm: 4 },
-            boxShadow: { xs: '0 8px 32px rgba(0,0,0,0.1)', sm: '0 12px 40px rgba(0,0,0,0.15)', md: '0 16px 48px rgba(0,0,0,0.2)' },
+            borderRadius: { xs: 2, sm: 4 },
+            boxShadow: { xs: '0 4px 20px rgba(0,0,0,0.1)', sm: '0 12px 40px rgba(0,0,0,0.15)', md: '0 16px 48px rgba(0,0,0,0.2)' },
             border: '1px solid',
             borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
             backdropFilter: 'blur(10px)',
-            animation: 'fadeInUp 0.6s ease-out'
+            animation: 'fadeInUp 0.6s ease-out',
+            overflow: 'auto'
           }}
         >
           <CardContent sx={{ 
-            padding: { xs: 4, sm: 5 },
-            '&:last-child': { paddingBottom: { xs: 4, sm: 5 } }
+            padding: { xs: 2.5, sm: 5 },
+            '&:last-child': { paddingBottom: { xs: 2.5, sm: 5 } }
           }}>
             {/* Header Section */}
             <div style={{ 
@@ -231,14 +233,14 @@ const TruthOrDareGenerator = () => {
               flexDirection: { xs: 'column', sm: 'row' },
               justifyContent: 'space-between', 
               alignItems: { xs: 'center', sm: 'center' }, 
-              marginBottom: { xs: 4, sm: 5 },
-              gap: { xs: 3, sm: 0 }
+              marginBottom: { xs: 2.5, sm: 5 },
+              gap: { xs: 2, sm: 0 }
             }}>
               <div style={{ textAlign: { xs: 'center', sm: 'left' } }}>
                 <h1 style={{ 
                   color: themeMode === 'dark' ? 'white' : '#1a1a1a', 
                   margin: 0,
-                  fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem' },
+                  fontSize: { xs: '1.5rem', sm: '2rem', md: '2.25rem' },
                   fontWeight: 700,
                   lineHeight: 1.2,
                   letterSpacing: '-0.02em'
@@ -247,8 +249,8 @@ const TruthOrDareGenerator = () => {
                 </h1>
                 <p style={{
                   color: themeMode === 'dark' ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)',
-                  margin: '8px 0 0 0',
-                  fontSize: { xs: '0.9rem', sm: '1rem' },
+                  margin: '4px 0 0 0',
+                  fontSize: { xs: '0.8rem', sm: '1rem' },
                   fontWeight: 400
                 }}>
                   問題生成器
@@ -276,7 +278,7 @@ const TruthOrDareGenerator = () => {
                   margin: 0,
                   color: themeMode === 'dark' ? 'white' : '#1a1a1a',
                   fontWeight: 500,
-                  fontSize: { xs: '0.9rem', sm: '1rem' }
+                  fontSize: { xs: '0.8rem', sm: '1rem' }
                 }}
               />
             </div>
@@ -285,12 +287,12 @@ const TruthOrDareGenerator = () => {
             {loading && (
               <Box sx={{ 
                 textAlign: 'center', 
-                py: 3,
+                py: 2,
                 animation: 'pulse 1.5s ease-in-out infinite'
               }}>
                 <p style={{ 
                   color: themeMode === 'dark' ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.7)', 
-                  fontSize: { xs: '0.95rem', sm: '1rem' },
+                  fontSize: { xs: '0.9rem', sm: '1rem' },
                   margin: 0
                 }}>
                   ⏳ 載入問題中...
@@ -302,8 +304,8 @@ const TruthOrDareGenerator = () => {
             {error && (
               <Box sx={{ 
                 textAlign: 'center', 
-                py: 2,
-                mb: 3,
+                py: 1.5,
+                mb: 2,
                 backgroundColor: themeMode === 'dark' ? 'rgba(255,107,107,0.1)' : 'rgba(255,107,107,0.05)',
                 borderRadius: 2,
                 border: '1px solid',
@@ -311,7 +313,7 @@ const TruthOrDareGenerator = () => {
               }}>
                 <p style={{ 
                   color: '#ff6b6b', 
-                  fontSize: { xs: '0.85rem', sm: '0.9rem' },
+                  fontSize: { xs: '0.8rem', sm: '0.9rem' },
                   margin: 0,
                   fontWeight: 500
                 }}>
@@ -327,13 +329,13 @@ const TruthOrDareGenerator = () => {
               fullWidth
               disabled={loading}
               sx={{ 
-                marginBottom: 4,
-                padding: { xs: 2, sm: 2.5 },
-                fontSize: { xs: '1.1rem', sm: '1.2rem' },
+                marginBottom: 3,
+                padding: { xs: 1.5, sm: 2.5 },
+                fontSize: { xs: '1rem', sm: '1.2rem' },
                 fontWeight: 600,
                 backgroundColor: themeMode === 'dark' ? '#fff' : '#1976d2',
                 color: themeMode === 'dark' ? '#1a1a1a' : '#fff',
-                borderRadius: 3,
+                borderRadius: 2,
                 textTransform: 'none',
                 boxShadow: themeMode === 'dark' 
                   ? '0 4px 20px rgba(255,255,255,0.2)' 
@@ -359,11 +361,11 @@ const TruthOrDareGenerator = () => {
               <Card 
                 variant="outlined" 
                 sx={{ 
-                  marginBottom: 4, 
-                  padding: { xs: 3, sm: 4 },
+                  marginBottom: 3, 
+                  padding: { xs: 2.5, sm: 4 },
                   backgroundColor: themeMode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(25,118,210,0.05)', 
                   color: themeMode === 'dark' ? 'white' : '#1a1a1a',
-                  borderRadius: 3,
+                  borderRadius: 2,
                   border: '1px solid',
                   borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(25,118,210,0.2)',
                   boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
@@ -372,8 +374,8 @@ const TruthOrDareGenerator = () => {
               >
                 <p style={{ 
                   margin: 0,
-                  fontSize: { xs: '1rem', sm: '1.1rem' },
-                  lineHeight: 1.6,
+                  fontSize: { xs: '0.95rem', sm: '1.1rem' },
+                  lineHeight: 1.5,
                   textAlign: 'center',
                   fontWeight: 500
                 }}>
@@ -385,15 +387,15 @@ const TruthOrDareGenerator = () => {
             {/* Add Question Section */}
             <Box sx={{ 
               backgroundColor: themeMode === 'dark' ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)',
-              borderRadius: 3,
-              padding: { xs: 3, sm: 4 },
+              borderRadius: 2,
+              padding: { xs: 2.5, sm: 4 },
               border: '1px solid',
               borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'
             }}>
               <h3 style={{
                 color: themeMode === 'dark' ? 'white' : '#1a1a1a',
-                margin: '0 0 16px 0',
-                fontSize: { xs: '1.1rem', sm: '1.2rem' },
+                margin: '0 0 12px 0',
+                fontSize: { xs: '1rem', sm: '1.2rem' },
                 fontWeight: 600,
                 textAlign: 'center'
               }}>
@@ -402,8 +404,8 @@ const TruthOrDareGenerator = () => {
               <div style={{ 
                 display: 'flex', 
                 flexDirection: { xs: 'column', sm: 'row' },
-                gap: { xs: 2, sm: 2 },
-                marginBottom: 2
+                gap: { xs: 1.5, sm: 2 },
+                marginBottom: 1
               }}>
                 <Input
                   value={newQuestion}
@@ -413,7 +415,7 @@ const TruthOrDareGenerator = () => {
                   disabled={loading}
                   sx={{ 
                     color: themeMode === 'dark' ? 'white' : '#1a1a1a',
-                    fontSize: { xs: '0.95rem', sm: '1rem' },
+                    fontSize: { xs: '0.9rem', sm: '1rem' },
                     '&:before': { borderBottomColor: themeMode === 'dark' ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)' },
                     '&:after': { borderBottomColor: themeMode === 'dark' ? '#fff' : '#1976d2' },
                     '&:hover:before': { borderBottomColor: themeMode === 'dark' ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)' }
@@ -427,7 +429,7 @@ const TruthOrDareGenerator = () => {
                     backgroundColor: themeMode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(25,118,210,0.1)',
                     color: themeMode === 'dark' ? 'white' : '#1976d2',
                     minWidth: { xs: '100%', sm: 'auto' },
-                    padding: { xs: 1.5, sm: 2 },
+                    padding: { xs: 1.25, sm: 2 },
                     borderRadius: 2,
                     textTransform: 'none',
                     fontWeight: 500,
@@ -452,14 +454,14 @@ const TruthOrDareGenerator = () => {
             {/* Footer */}
             <Box sx={{ 
               textAlign: 'center', 
-              mt: 4,
-              pt: 3,
+              mt: 3,
+              pt: 2,
               borderTop: '1px solid',
               borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
             }}>
               <p style={{ 
                 color: themeMode === 'dark' ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.6)', 
-                fontSize: { xs: '0.8rem', sm: '0.85rem' }, 
+                fontSize: { xs: '0.75rem', sm: '0.85rem' }, 
                 margin: 0,
                 fontWeight: 500
               }}>
