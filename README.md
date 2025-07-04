@@ -1,66 +1,24 @@
-# Truth or Dare - Cantonese Edition (MERN Stack)
+# Truth or Dare - Cantonese Edition
 
-A full-stack MERN (MongoDB, Express, React, Node.js) application for generating Cantonese "Truth or Dare" questions.
+A React application for generating Cantonese "Truth or Dare" questions, perfect for GitHub Pages deployment.
 
 ## Features
 
-- 🎲 Random question generator
-- ➕ Add custom questions
-- 💾 Persistent storage with MongoDB Atlas
+- 🎲 Random question generator with 101 original Cantonese questions
+- ➕ Add custom questions (saved in browser localStorage)
 - 🎨 Modern dark/light theme toggle
 - 📱 Responsive design
-- 🌐 Works on GitHub Pages
+- 🌐 Works perfectly on GitHub Pages
+- 💾 Persistent storage using browser localStorage
 
-## Quick Start (GitHub Pages)
+## Quick Start
 
-### 1. **Set up MongoDB Atlas (Free Database)**
+### **Deploy to GitHub Pages**
 
-1. **Create MongoDB Atlas Account**
-   - Go to [MongoDB Atlas](https://www.mongodb.com/atlas)
-   - Sign up for a free account
-
-2. **Create a Cluster**
-   - Click "Build a Database"
-   - Choose "FREE" tier (M0)
-   - Select your preferred cloud provider & region
-   - Click "Create"
-
-3. **Set up Database Access**
-   - Go to "Database Access" in the left sidebar
-   - Click "Add New Database User"
-   - Create a username and password (save these!)
-   - Select "Read and write to any database"
-   - Click "Add User"
-
-4. **Set up Network Access**
-   - Go to "Network Access" in the left sidebar
-   - Click "Add IP Address"
-   - Click "Allow Access from Anywhere" (for GitHub Pages)
-   - Click "Confirm"
-
-5. **Get Connection String**
-   - Go back to "Database" in the left sidebar
-   - Click "Connect" on your cluster
-   - Choose "Connect your application"
-   - Copy the connection string
-
-### 2. **Configure the App**
-
-1. **Update Database Configuration**
+1. **Clone and install dependencies**
    ```bash
-   # Edit src/config/db.js
-   # Replace YOUR_MONGODB_ATLAS_CONNECTION_STRING with your actual connection string
-   ```
-
-2. **Example connection string format:**
-   ```javascript
-   connectionString: "mongodb+srv://username:password@cluster.mongodb.net/truth-or-dare"
-   ```
-
-### 3. **Deploy to GitHub Pages**
-
-1. **Install dependencies**
-   ```bash
+   git clone https://github.com/heilcheng/Truth-or-Dare-Canto.git
+   cd Truth-or-Dare-Canto
    npm install
    ```
 
@@ -85,62 +43,20 @@ A full-stack MERN (MongoDB, Express, React, Node.js) application for generating 
 Truth-or-Dare-Canto/
 ├── src/                 # React frontend
 │   ├── App.js          # Main React component
-│   ├── config/         # Database configuration
-│   │   └── db.js       # MongoDB Atlas settings
-│   └── services/       # Database services
-│       └── mongodbService.js  # MongoDB operations
-├── server/             # Node.js backend (optional)
-└── package.json        # Frontend dependencies
-```
-
-## MongoDB Atlas Setup (Detailed)
-
-### **Step 1: Create Account**
-- Visit [MongoDB Atlas](https://www.mongodb.com/atlas)
-- Click "Try Free" and create an account
-
-### **Step 2: Create Cluster**
-- Choose "FREE" tier (M0)
-- Select cloud provider (AWS, Google Cloud, or Azure)
-- Choose region closest to you
-- Click "Create Cluster"
-
-### **Step 3: Database Access**
-- Go to "Database Access" → "Add New Database User"
-- Username: `truth-or-dare-user`
-- Password: Create a strong password
-- Built-in Role: "Read and write to any database"
-- Click "Add User"
-
-### **Step 4: Network Access**
-- Go to "Network Access" → "Add IP Address"
-- Click "Allow Access from Anywhere" (0.0.0.0/0)
-- Click "Confirm"
-
-### **Step 5: Get Connection String**
-- Go to "Database" → Click "Connect"
-- Choose "Connect your application"
-- Copy the connection string
-- Replace `<password>` with your password
-- Replace `<dbname>` with `truth-or-dare`
-
-### **Step 6: Update Configuration**
-Edit `src/config/db.js`:
-```javascript
-export const MONGODB_CONFIG = {
-  connectionString: "mongodb+srv://truth-or-dare-user:YOUR_PASSWORD@cluster.mongodb.net/truth-or-dare",
-  databaseName: "truth-or-dare",
-  collectionName: "questions"
-};
+│   ├── App.css         # Styles
+│   └── index.js        # App entry point
+├── public/             # Static assets
+└── package.json        # Dependencies and scripts
 ```
 
 ## Features
 
-### **Database Integration**
-- ✅ Connects directly to MongoDB Atlas from frontend
-- ✅ Automatic seeding of initial questions
-- ✅ Persistent storage of new questions
-- ✅ Fallback to local storage if MongoDB unavailable
+### **Question Management**
+- 📊 Shows total question count
+- ➕ Add custom questions (persisted in localStorage)
+- 🎲 Random question generation
+- 💾 Data persistence across browser sessions
+- 🔄 101 original Cantonese questions included
 
 ### **Theme Support**
 - 🌙 Dark mode (default)
@@ -148,11 +64,11 @@ export const MONGODB_CONFIG = {
 - 🔄 Toggle between themes
 - 🎨 Smooth transitions
 
-### **Question Management**
-- 📊 Shows total question count
-- ➕ Add custom questions
-- 🎲 Random question generation
-- 💾 Data persistence
+### **Storage**
+- 💾 Uses browser localStorage for persistence
+- 🔄 Automatically loads saved questions
+- 📱 Works offline
+- 🌐 No server required
 
 ## Development
 
@@ -172,17 +88,35 @@ npm run deploy
 ```
 
 ### **Environment Setup**
-- No environment variables needed for GitHub Pages
-- MongoDB connection is configured in `src/config/db.js`
-- App works offline with fallback questions
+- No environment variables needed
+- No database setup required
+- Works completely offline
+- Perfect for GitHub Pages
+
+## How It Works
+
+1. **Initial Load**: App loads with 101 original Cantonese questions
+2. **Local Storage**: Questions are saved to browser's localStorage
+3. **Custom Questions**: New questions are added to localStorage
+4. **Persistence**: Questions persist across browser sessions
+5. **Offline**: Works completely offline
+
+## Advantages of This Approach
+
+### **For GitHub Pages**
+- ✅ **No backend required** - GitHub Pages only supports static sites
+- ✅ **No database setup** - Uses browser localStorage
+- ✅ **Instant deployment** - Just push to GitHub
+- ✅ **Free hosting** - GitHub Pages is completely free
+- ✅ **Global CDN** - Fast loading worldwide
+
+### **For Users**
+- ✅ **Works offline** - No internet required after first load
+- ✅ **Fast loading** - No API calls needed
+- ✅ **Private data** - Questions stored locally on user's device
+- ✅ **No accounts** - No registration required
 
 ## Troubleshooting
-
-### **MongoDB Connection Issues**
-1. **Check connection string** in `src/config/db.js`
-2. **Verify network access** allows connections from anywhere
-3. **Confirm database user** has read/write permissions
-4. **Check browser console** for connection errors
 
 ### **GitHub Pages Issues**
 1. **Ensure homepage** is set correctly in `package.json`
@@ -190,12 +124,18 @@ npm run deploy
 3. **Verify gh-pages** dependency is installed
 4. **Check GitHub Pages settings** in repository
 
-## Security Notes
+### **Local Storage Issues**
+1. **Check browser console** for localStorage errors
+2. **Verify browser supports** localStorage
+3. **Check storage quota** if many questions added
+4. **Try incognito mode** to test fresh state
 
-- ✅ Connection string is in frontend code (acceptable for public apps)
-- ✅ Database user has minimal required permissions
-- ✅ Network access is restricted to read/write operations
-- ⚠️ For production apps, consider using environment variables
+## Security & Privacy
+
+- ✅ **No data sent to servers** - Everything stays local
+- ✅ **No tracking** - No analytics or user tracking
+- ✅ **Private by default** - Questions only visible to user
+- ✅ **No accounts** - No personal data collected
 
 ## Contributing
 
@@ -204,6 +144,14 @@ npm run deploy
 3. Make your changes
 4. Test thoroughly
 5. Submit a pull request
+
+## Future Enhancements
+
+- 🔄 **Cloud sync** - Optional cloud storage for questions
+- 📱 **PWA support** - Install as mobile app
+- 🎨 **More themes** - Additional color schemes
+- 📊 **Statistics** - Question usage analytics
+- 🌐 **Multi-language** - Support for other languages
 
 ## License
 
