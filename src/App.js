@@ -204,7 +204,8 @@ const TruthOrDareGenerator = () => {
           alignItems: 'center',
           justifyContent: 'center',
           padding: { xs: 2, sm: 3, md: 4 },
-          boxSizing: 'border-box'
+          boxSizing: 'border-box',
+          position: 'relative'
         }}
       >
         <Card 
@@ -212,144 +213,295 @@ const TruthOrDareGenerator = () => {
             width: '100%',
             maxWidth: { xs: '100%', sm: 450, md: 500 },
             backgroundColor: 'background.paper',
-            borderRadius: { xs: 2, sm: 3 },
-            boxShadow: { xs: 2, sm: 4, md: 6 }
+            borderRadius: { xs: 3, sm: 4 },
+            boxShadow: { xs: '0 8px 32px rgba(0,0,0,0.1)', sm: '0 12px 40px rgba(0,0,0,0.15)', md: '0 16px 48px rgba(0,0,0,0.2)' },
+            border: '1px solid',
+            borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
+            backdropFilter: 'blur(10px)',
+            animation: 'fadeInUp 0.6s ease-out'
           }}
         >
-          <CardContent sx={{ padding: { xs: 3, sm: 4 } }}>
+          <CardContent sx={{ 
+            padding: { xs: 4, sm: 5 },
+            '&:last-child': { paddingBottom: { xs: 4, sm: 5 } }
+          }}>
+            {/* Header Section */}
             <div style={{ 
               display: 'flex', 
               flexDirection: { xs: 'column', sm: 'row' },
               justifyContent: 'space-between', 
-              alignItems: { xs: 'flex-start', sm: 'center' }, 
-              marginBottom: { xs: 3, sm: 4 },
-              gap: { xs: 2, sm: 0 }
+              alignItems: { xs: 'center', sm: 'center' }, 
+              marginBottom: { xs: 4, sm: 5 },
+              gap: { xs: 3, sm: 0 }
             }}>
-              <h2 style={{ 
-                color: themeMode === 'dark' ? 'white' : '#222', 
-                margin: 0,
-                fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' },
-                textAlign: { xs: 'center', sm: 'left' },
-                width: { xs: '100%', sm: 'auto' }
-              }}>
-                廣東話真心話問題生成器
-              </h2>
+              <div style={{ textAlign: { xs: 'center', sm: 'left' } }}>
+                <h1 style={{ 
+                  color: themeMode === 'dark' ? 'white' : '#1a1a1a', 
+                  margin: 0,
+                  fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem' },
+                  fontWeight: 700,
+                  lineHeight: 1.2,
+                  letterSpacing: '-0.02em'
+                }}>
+                  廣東話真心話
+                </h1>
+                <p style={{
+                  color: themeMode === 'dark' ? 'rgba(255,255,255,0.7)' : 'rgba(0,0,0,0.6)',
+                  margin: '8px 0 0 0',
+                  fontSize: { xs: '0.9rem', sm: '1rem' },
+                  fontWeight: 400
+                }}>
+                  問題生成器
+                </p>
+              </div>
               <FormControlLabel
-                control={<Switch checked={themeMode === 'dark'} onChange={handleThemeToggle} color="primary" />}
-                label={themeMode === 'dark' ? '夜間' : '日間'}
+                control={
+                  <Switch 
+                    checked={themeMode === 'dark'} 
+                    onChange={handleThemeToggle} 
+                    color="primary"
+                    sx={{
+                      '& .MuiSwitch-switchBase': {
+                        color: themeMode === 'dark' ? '#fff' : '#1976d2',
+                      },
+                      '& .MuiSwitch-track': {
+                        backgroundColor: themeMode === 'dark' ? 'rgba(255,255,255,0.3)' : 'rgba(25,118,210,0.3)',
+                      }
+                    }}
+                  />
+                }
+                label={themeMode === 'dark' ? '🌙 夜間' : '☀️ 日間'}
                 labelPlacement="start"
                 sx={{ 
-                  marginLeft: { xs: 0, sm: 1 }, 
-                  color: themeMode === 'dark' ? 'white' : '#222',
-                  alignSelf: { xs: 'center', sm: 'flex-start' }
+                  margin: 0,
+                  color: themeMode === 'dark' ? 'white' : '#1a1a1a',
+                  fontWeight: 500,
+                  fontSize: { xs: '0.9rem', sm: '1rem' }
                 }}
               />
             </div>
             
+            {/* Loading State */}
             {loading && (
-              <p style={{ 
-                color: themeMode === 'dark' ? 'white' : '#222', 
-                textAlign: 'center',
-                fontSize: { xs: '0.9rem', sm: '1rem' }
-              }}>
-                Loading questions...
-              </p>
-            )}
-            
-            {error && (
-              <p style={{ 
-                color: '#ff6b6b', 
+              <Box sx={{ 
                 textAlign: 'center', 
-                fontSize: { xs: '0.8rem', sm: '0.9rem' },
-                marginBottom: 2
+                py: 3,
+                animation: 'pulse 1.5s ease-in-out infinite'
               }}>
-                {error}
-              </p>
+                <p style={{ 
+                  color: themeMode === 'dark' ? 'rgba(255,255,255,0.8)' : 'rgba(0,0,0,0.7)', 
+                  fontSize: { xs: '0.95rem', sm: '1rem' },
+                  margin: 0
+                }}>
+                  ⏳ 載入問題中...
+                </p>
+              </Box>
             )}
             
+            {/* Error State */}
+            {error && (
+              <Box sx={{ 
+                textAlign: 'center', 
+                py: 2,
+                mb: 3,
+                backgroundColor: themeMode === 'dark' ? 'rgba(255,107,107,0.1)' : 'rgba(255,107,107,0.05)',
+                borderRadius: 2,
+                border: '1px solid',
+                borderColor: 'rgba(255,107,107,0.3)'
+              }}>
+                <p style={{ 
+                  color: '#ff6b6b', 
+                  fontSize: { xs: '0.85rem', sm: '0.9rem' },
+                  margin: 0,
+                  fontWeight: 500
+                }}>
+                  ⚠️ {error}
+                </p>
+              </Box>
+            )}
+            
+            {/* Generate Button */}
             <Button
               variant="contained"
               onClick={generateQuestion}
               fullWidth
               disabled={loading}
               sx={{ 
-                marginBottom: 3,
-                padding: { xs: 1.5, sm: 2 },
-                fontSize: { xs: '1rem', sm: '1.1rem' },
-                backgroundColor: themeMode === 'dark' ? 'black' : 'primary.main', 
-                '&:hover': { backgroundColor: themeMode === 'dark' ? '#333' : '#1565c0' }
+                marginBottom: 4,
+                padding: { xs: 2, sm: 2.5 },
+                fontSize: { xs: '1.1rem', sm: '1.2rem' },
+                fontWeight: 600,
+                backgroundColor: themeMode === 'dark' ? '#fff' : '#1976d2',
+                color: themeMode === 'dark' ? '#1a1a1a' : '#fff',
+                borderRadius: 3,
+                textTransform: 'none',
+                boxShadow: themeMode === 'dark' 
+                  ? '0 4px 20px rgba(255,255,255,0.2)' 
+                  : '0 4px 20px rgba(25,118,210,0.3)',
+                '&:hover': { 
+                  backgroundColor: themeMode === 'dark' ? '#f0f0f0' : '#1565c0',
+                  transform: 'translateY(-2px)',
+                  boxShadow: themeMode === 'dark' 
+                    ? '0 6px 25px rgba(255,255,255,0.3)' 
+                    : '0 6px 25px rgba(25,118,210,0.4)'
+                },
+                '&:active': {
+                  transform: 'translateY(0)'
+                },
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
               }}
             >
-              生成問題
+              🎲 生成問題
             </Button>
             
+            {/* Question Display */}
             {currentQuestion && (
               <Card 
                 variant="outlined" 
                 sx={{ 
-                  marginBottom: 3, 
-                  padding: { xs: 2.5, sm: 3 },
-                  backgroundColor: themeMode === 'dark' ? '#2C2C2C' : '#f5f5f5', 
-                  color: themeMode === 'dark' ? 'white' : '#222',
-                  borderRadius: 2
+                  marginBottom: 4, 
+                  padding: { xs: 3, sm: 4 },
+                  backgroundColor: themeMode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(25,118,210,0.05)', 
+                  color: themeMode === 'dark' ? 'white' : '#1a1a1a',
+                  borderRadius: 3,
+                  border: '1px solid',
+                  borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(25,118,210,0.2)',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                  animation: 'slideInUp 0.5s ease-out'
                 }}
               >
                 <p style={{ 
                   margin: 0,
-                  fontSize: { xs: '0.95rem', sm: '1rem' },
+                  fontSize: { xs: '1rem', sm: '1.1rem' },
                   lineHeight: 1.6,
-                  textAlign: 'center'
+                  textAlign: 'center',
+                  fontWeight: 500
                 }}>
-                  {currentQuestion}
+                  💭 {currentQuestion}
                 </p>
               </Card>
             )}
             
-            <div style={{ 
-              display: 'flex', 
-              flexDirection: { xs: 'column', sm: 'row' },
-              gap: { xs: 2, sm: 1 },
-              marginBottom: 2
+            {/* Add Question Section */}
+            <Box sx={{ 
+              backgroundColor: themeMode === 'dark' ? 'rgba(255,255,255,0.02)' : 'rgba(0,0,0,0.02)',
+              borderRadius: 3,
+              padding: { xs: 3, sm: 4 },
+              border: '1px solid',
+              borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'
             }}>
-              <Input
-                value={newQuestion}
-                onChange={(e) => setNewQuestion(e.target.value)}
-                placeholder="輸入新問題"
-                fullWidth
-                disabled={loading}
-                sx={{ 
-                  color: themeMode === 'dark' ? 'white' : '#222', 
-                  '&:before': { borderBottomColor: themeMode === 'dark' ? 'white' : '#222' },
-                  fontSize: { xs: '0.9rem', sm: '1rem' }
-                }}
-              />
-              <Button
-                variant="contained"
-                onClick={addNewQuestion}
-                disabled={loading || newQuestion.trim() === ""}
-                sx={{ 
-                  backgroundColor: themeMode === 'dark' ? 'black' : 'primary.main', 
-                  '&:hover': { backgroundColor: themeMode === 'dark' ? '#333' : '#1565c0' },
-                  minWidth: { xs: '100%', sm: 'auto' },
-                  padding: { xs: 1.5, sm: 2 }
-                }}
-              >
-                添加
-              </Button>
-            </div>
+              <h3 style={{
+                color: themeMode === 'dark' ? 'white' : '#1a1a1a',
+                margin: '0 0 16px 0',
+                fontSize: { xs: '1.1rem', sm: '1.2rem' },
+                fontWeight: 600,
+                textAlign: 'center'
+              }}>
+                ➕ 添加新問題
+              </h3>
+              <div style={{ 
+                display: 'flex', 
+                flexDirection: { xs: 'column', sm: 'row' },
+                gap: { xs: 2, sm: 2 },
+                marginBottom: 2
+              }}>
+                <Input
+                  value={newQuestion}
+                  onChange={(e) => setNewQuestion(e.target.value)}
+                  placeholder="輸入你的問題..."
+                  fullWidth
+                  disabled={loading}
+                  sx={{ 
+                    color: themeMode === 'dark' ? 'white' : '#1a1a1a',
+                    fontSize: { xs: '0.95rem', sm: '1rem' },
+                    '&:before': { borderBottomColor: themeMode === 'dark' ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)' },
+                    '&:after': { borderBottomColor: themeMode === 'dark' ? '#fff' : '#1976d2' },
+                    '&:hover:before': { borderBottomColor: themeMode === 'dark' ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)' }
+                  }}
+                />
+                <Button
+                  variant="contained"
+                  onClick={addNewQuestion}
+                  disabled={loading || newQuestion.trim() === ""}
+                  sx={{ 
+                    backgroundColor: themeMode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(25,118,210,0.1)',
+                    color: themeMode === 'dark' ? 'white' : '#1976d2',
+                    minWidth: { xs: '100%', sm: 'auto' },
+                    padding: { xs: 1.5, sm: 2 },
+                    borderRadius: 2,
+                    textTransform: 'none',
+                    fontWeight: 500,
+                    border: '1px solid',
+                    borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(25,118,210,0.2)',
+                    '&:hover': { 
+                      backgroundColor: themeMode === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(25,118,210,0.2)',
+                      transform: 'translateY(-1px)'
+                    },
+                    '&:disabled': {
+                      opacity: 0.5,
+                      transform: 'none'
+                    },
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  添加
+                </Button>
+              </div>
+            </Box>
             
-            <p style={{ 
-              color: themeMode === 'dark' ? 'white' : '#222', 
-              fontSize: { xs: '0.75rem', sm: '0.8rem' }, 
+            {/* Footer */}
+            <Box sx={{ 
               textAlign: 'center', 
-              marginTop: '10px',
-              opacity: 0.7
+              mt: 4,
+              pt: 3,
+              borderTop: '1px solid',
+              borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
             }}>
-              Total Questions: {questions.length} (Local Storage)
-            </p>
+              <p style={{ 
+                color: themeMode === 'dark' ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.6)', 
+                fontSize: { xs: '0.8rem', sm: '0.85rem' }, 
+                margin: 0,
+                fontWeight: 500
+              }}>
+                📊 總問題數: {questions.length} (本地儲存)
+              </p>
+            </Box>
           </CardContent>
         </Card>
       </Box>
+      
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+        }
+      `}</style>
     </ThemeProvider>
   );
 };
