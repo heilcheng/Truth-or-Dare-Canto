@@ -1,158 +1,176 @@
-# Truth or Dare - Cantonese Edition
+# 真心話大冒險（廣東話版）
 
-A React application for generating Cantonese "Truth or Dare" questions, perfect for GitHub Pages deployment.
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-blue?style=for-the-badge&logo=github)](https://heilcheng.github.io/Truth-or-Dare-Canto)
+[![React](https://img.shields.io/badge/React-18.0+-61DAFB?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![Material-UI](https://img.shields.io/badge/Material--UI-5.0+-007FFF?style=for-the-badge&logo=mui)](https://mui.com/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-## Features
+## 🚩 立即試玩
 
-- 🎲 Random question generator with 101 original Cantonese questions
-- ➕ Add custom questions (saved in browser localStorage)
-- 🎨 Modern dark/light theme toggle
-- 📱 Responsive design
-- 🌐 Works perfectly on GitHub Pages
-- 💾 Persistent storage using browser localStorage
+**[👉 點我即刻玩！](https://heilcheng.github.io/Truth-or-Dare-Canto)**
 
-## Quick Start
+---
 
-### **Deploy to GitHub Pages**
+## 🎮 遊戲介紹
 
-1. **Clone and install dependencies**
-   ```bash
-   git clone https://github.com/heilcheng/Truth-or-Dare-Canto.git
-   cd Truth-or-Dare-Canto
-   npm install
-   ```
+呢個係一個簡單嘅「真心話大冒險」網頁版遊戲，專為廣東話玩家而設！唔使再煩住諗題目，無論你係聚會、Party 定係宿舍傾計，都可以即刻用嚟玩，炒熱氣氛，玩到停唔到手！
 
-2. **Build the app**
-   ```bash
-   npm run build
-   ```
+### 🌟 主要功能
 
-3. **Deploy**
-   ```bash
-   npm run deploy
-   ```
+- ✅ **即時生成真心話或者大冒險題目**
+- ✅ **題目用地道廣東話，夠貼地**
+- ✅ **手機、電腦都玩得**
+- ✅ **無需安裝，打開就可以玩**
+- ✅ **深色/淺色主題切換**
+- ✅ **自定義題目添加**
+- ✅ **本地儲存，唔會冇咗啲題目**
 
-4. **Your app will be available at:**
-   ```
-   https://heilcheng.github.io/Truth-or-Dare-Canto
-   ```
+### 💡 點玩？
 
-## Project Structure
+1️⃣ **打開網頁** - 直接去 [遊戲頁面](https://heilcheng.github.io/Truth-or-Dare-Canto)
 
-```
-Truth-or-Dare-Canto/
-├── src/                 # React frontend
-│   ├── App.js          # Main React component
-│   ├── App.css         # Styles
-│   └── index.js        # App entry point
-├── public/             # Static assets
-└── package.json        # Dependencies and scripts
-```
+2️⃣ **撳「生成問題」** - 一撳就有新題目
 
-## Features
+3️⃣ **即刻拎到題目** - 跟住照做 or 答問題
 
-### **Question Management**
-- 📊 Shows total question count
-- ➕ Add custom questions (persisted in localStorage)
-- 🎲 Random question generation
-- 💾 Data persistence across browser sessions
-- 🔄 101 original Cantonese questions included
+**就咁簡單，任何場合都啱玩！**
 
-### **Theme Support**
-- 🌙 Dark mode (default)
-- ☀️ Light mode
-- 🔄 Toggle between themes
-- 🎨 Smooth transitions
+---
 
-### **Storage**
-- 💾 Uses browser localStorage for persistence
-- 🔄 Automatically loads saved questions
-- 📱 Works offline
-- 🌐 No server required
+## 💬 部分示例題目
 
-## Development
+### 🎭 真心話題目
+- 「講一個你最唔想比人知嘅秘密」
+- 「WhatsApp 最尾一次Send俾邊個？」
+- 「你最後悔嘅一件事係咩？」
+- 「如果你可以同任何名人約會，你會揀邊個？」
 
-### **Local Development**
+### 🎪 大冒險題目
+- 「即刻影張奇怪Selfie post IG Story」
+- 「用廣東話唱一段你最鍾意嘅歌」
+- 「模仿一個朋友嘅動作或者講嘢方式」
+- 「即刻打電話俾一個朋友，同佢講你愛佢」
+
+---
+
+## 🛠️ 技術架構
+
+### 前端技術
+- **React 18** - 現代化前端框架
+- **Material-UI 5** - 專業 UI 組件庫
+- **Responsive Design** - 完美支援手機同電腦
+- **Local Storage** - 本地數據儲存
+
+### 開發工具
+- **Create React App** - 快速開發環境
+- **GitHub Pages** - 免費託管服務
+- **Modern JavaScript** - ES6+ 語法
+
+---
+
+## 🚀 快速開始
+
+### 本地開發
+
 ```bash
-# Install dependencies
+# 克隆項目
+git clone https://github.com/heilcheng/Truth-or-Dare-Canto.git
+
+# 進入項目目錄
+cd Truth-or-Dare-Canto
+
+# 安裝依賴
 npm install
 
-# Start development server
+# 啟動開發服務器
 npm start
+```
 
-# Build for production
+### 部署到 GitHub Pages
+
+```bash
+# 構建生產版本
 npm run build
 
-# Deploy to GitHub Pages
+# 部署
 npm run deploy
 ```
 
-### **Environment Setup**
-- No environment variables needed
-- No database setup required
-- Works completely offline
-- Perfect for GitHub Pages
+---
 
-## How It Works
+## 📱 支援平台
 
-1. **Initial Load**: App loads with 101 original Cantonese questions
-2. **Local Storage**: Questions are saved to browser's localStorage
-3. **Custom Questions**: New questions are added to localStorage
-4. **Persistence**: Questions persist across browser sessions
-5. **Offline**: Works completely offline
+- ✅ **iPhone / iPad** - Safari, Chrome
+- ✅ **Android 手機** - Chrome, Firefox
+- ✅ **桌面電腦** - Chrome, Firefox, Safari, Edge
+- ✅ **筆記本電腦** - 所有現代瀏覽器
 
-## Advantages of This Approach
+---
 
-### **For GitHub Pages**
-- ✅ **No backend required** - GitHub Pages only supports static sites
-- ✅ **No database setup** - Uses browser localStorage
-- ✅ **Instant deployment** - Just push to GitHub
-- ✅ **Free hosting** - GitHub Pages is completely free
-- ✅ **Global CDN** - Fast loading worldwide
+## 🎨 功能特色
 
-### **For Users**
-- ✅ **Works offline** - No internet required after first load
-- ✅ **Fast loading** - No API calls needed
-- ✅ **Private data** - Questions stored locally on user's device
-- ✅ **No accounts** - No registration required
+### 🌙 深色模式
+- 自動適應系統主題
+- 手動切換深色/淺色模式
+- 護眼設計，長時間使用都唔會攰
 
-## Troubleshooting
+### 📱 響應式設計
+- 完美適配所有屏幕尺寸
+- 觸控優化，手機操作流暢
+- 橫屏/豎屏自動調整
 
-### **GitHub Pages Issues**
-1. **Ensure homepage** is set correctly in `package.json`
-2. **Check build output** in `build/` folder
-3. **Verify gh-pages** dependency is installed
-4. **Check GitHub Pages settings** in repository
+### 💾 數據持久化
+- 本地儲存自定義題目
+- 唔會因為刷新頁面而冇咗
+- 私隱保護，數據只係你部機度
 
-### **Local Storage Issues**
-1. **Check browser console** for localStorage errors
-2. **Verify browser supports** localStorage
-3. **Check storage quota** if many questions added
-4. **Try incognito mode** to test fresh state
+---
 
-## Security & Privacy
+## 🤝 貢獻指南
 
-- ✅ **No data sent to servers** - Everything stays local
-- ✅ **No tracking** - No analytics or user tracking
-- ✅ **Private by default** - Questions only visible to user
-- ✅ **No accounts** - No personal data collected
+歡迎大家一齊改進呢個項目！
 
-## Contributing
+### 如何貢獻
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+1. **Fork** 呢個項目
+2. 創建一個 **Feature Branch** (`git checkout -b feature/AmazingFeature`)
+3. **Commit** 你嘅改動 (`git commit -m 'Add some AmazingFeature'`)
+4. **Push** 到 Branch (`git push origin feature/AmazingFeature`)
+5. 開一個 **Pull Request**
 
-## Future Enhancements
+### 貢獻內容
 
-- 🔄 **Cloud sync** - Optional cloud storage for questions
-- 📱 **PWA support** - Install as mobile app
-- 🎨 **More themes** - Additional color schemes
-- 📊 **Statistics** - Question usage analytics
-- 🌐 **Multi-language** - Support for other languages
+- 🎯 **新題目** - 添加更多有趣嘅真心話大冒險題目
+- 🎨 **UI 改進** - 改善用戶界面同體驗
+- 🐛 **Bug 修復** - 報告同修復問題
+- 📚 **文檔改進** - 改善 README 同文檔
 
-## License
+---
 
-This project is open source and available under the [MIT License](LICENSE).
+## 📄 授權條款
+
+呢個項目採用 **MIT 授權條款** - 詳情請睇 [LICENSE](LICENSE) 文件
+
+---
+
+## 💖 支持同分享
+
+如果你覺得好玩，記得：
+
+- ⭐ **Star** 呢個項目
+- 🔄 **Fork** 自己嘅版本
+- 📤 **Share** 俾朋友
+- 💬 **Feedback** 俾意見
+
+幫手推廣廣東話文化，等更多人認識我哋嘅語言魅力！
+
+---
+
+## 📞 聯絡方式
+
+- 🌐 **網頁**: [https://heilcheng.github.io/Truth-or-Dare-Canto](https://heilcheng.github.io/Truth-or-Dare-Canto)
+- 📧 **GitHub**: [@heilcheng](https://github.com/heilcheng)
+
+---
+
+**�� 多謝你嘅支持，一齊玩得開心！**
