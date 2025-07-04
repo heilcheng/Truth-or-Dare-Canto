@@ -4,6 +4,8 @@
 
 **[👉 點我即刻玩！](https://heilcheng.github.io/Truth-or-Dare-Canto)**
 
+![Screenshot 2025-07-05 at 12 37 48 am](https://github.com/user-attachments/assets/7ab9e93e-fe7d-427e-92dc-a04b5ed38ac0)
+
 ---
 
 ## 🎮 遊戲介紹
