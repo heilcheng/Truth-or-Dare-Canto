@@ -390,7 +390,8 @@ const TruthOrDareGenerator = () => {
               borderRadius: 2,
               padding: { xs: 2.5, sm: 4 },
               border: '1px solid',
-              borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'
+              borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
+              marginBottom: { xs: 2, sm: 3 }
             }}>
               <h3 style={{
                 color: themeMode === 'dark' ? 'white' : '#1a1a1a',
@@ -401,11 +402,15 @@ const TruthOrDareGenerator = () => {
               }}>
                 ➕ 添加新問題
               </h3>
-              <div style={{ 
-                display: 'flex', 
-                flexDirection: { xs: 'column', sm: 'row' },
-                gap: { xs: 1.5, sm: 2 },
-                marginBottom: 1
+              
+              {/* Input Field - Made more prominent */}
+              <Box sx={{ 
+                marginBottom: 2,
+                backgroundColor: themeMode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
+                borderRadius: 1,
+                padding: 1,
+                border: '1px solid',
+                borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)'
               }}>
                 <Input
                   value={newQuestion}
@@ -415,40 +420,47 @@ const TruthOrDareGenerator = () => {
                   disabled={loading}
                   sx={{ 
                     color: themeMode === 'dark' ? 'white' : '#1a1a1a',
-                    fontSize: { xs: '0.9rem', sm: '1rem' },
+                    fontSize: { xs: '0.95rem', sm: '1rem' },
                     '&:before': { borderBottomColor: themeMode === 'dark' ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)' },
                     '&:after': { borderBottomColor: themeMode === 'dark' ? '#fff' : '#1976d2' },
-                    '&:hover:before': { borderBottomColor: themeMode === 'dark' ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)' }
+                    '&:hover:before': { borderBottomColor: themeMode === 'dark' ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)' },
+                    '& input::placeholder': {
+                      color: themeMode === 'dark' ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)',
+                      opacity: 1
+                    }
                   }}
                 />
-                <Button
-                  variant="contained"
-                  onClick={addNewQuestion}
-                  disabled={loading || newQuestion.trim() === ""}
-                  sx={{ 
-                    backgroundColor: themeMode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(25,118,210,0.1)',
-                    color: themeMode === 'dark' ? 'white' : '#1976d2',
-                    minWidth: { xs: '100%', sm: 'auto' },
-                    padding: { xs: 1.25, sm: 2 },
-                    borderRadius: 2,
-                    textTransform: 'none',
-                    fontWeight: 500,
-                    border: '1px solid',
-                    borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(25,118,210,0.2)',
-                    '&:hover': { 
-                      backgroundColor: themeMode === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(25,118,210,0.2)',
-                      transform: 'translateY(-1px)'
-                    },
-                    '&:disabled': {
-                      opacity: 0.5,
-                      transform: 'none'
-                    },
-                    transition: 'all 0.2s ease'
-                  }}
-                >
-                  添加
-                </Button>
-              </div>
+              </Box>
+              
+              {/* Add Button */}
+              <Button
+                variant="contained"
+                onClick={addNewQuestion}
+                disabled={loading || newQuestion.trim() === ""}
+                fullWidth
+                sx={{ 
+                  backgroundColor: themeMode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(25,118,210,0.1)',
+                  color: themeMode === 'dark' ? 'white' : '#1976d2',
+                  padding: { xs: 1.5, sm: 2 },
+                  borderRadius: 2,
+                  textTransform: 'none',
+                  fontWeight: 500,
+                  border: '1px solid',
+                  borderColor: themeMode === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(25,118,210,0.2)',
+                  fontSize: { xs: '0.95rem', sm: '1rem' },
+                  '&:hover': { 
+                    backgroundColor: themeMode === 'dark' ? 'rgba(255,255,255,0.2)' : 'rgba(25,118,210,0.2)',
+                    transform: 'translateY(-1px)'
+                  },
+                  '&:disabled': {
+                    opacity: 0.5,
+                    transform: 'none'
+                  },
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                ➕ 添加問題
+              </Button>
             </Box>
             
             {/* Footer */}

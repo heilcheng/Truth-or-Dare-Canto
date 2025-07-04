@@ -374,4 +374,52 @@ html {
   .MuiInput-root {
     font-size: 0.9rem !important;
   }
+  
+  /* Ensure input field is always visible */
+  .MuiInput-root {
+    min-height: 48px !important;
+    padding: 8px 0 !important;
+    margin-bottom: 8px !important;
+  }
+  
+  /* Make input field more prominent */
+  .MuiInput-root input {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    padding: 8px 0 !important;
+  }
+  
+  /* Ensure placeholder text is visible */
+  .MuiInput-root input::placeholder {
+    opacity: 1 !important;
+    color: rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  [data-mui-color-scheme="dark"] .MuiInput-root input::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+  
+  /* Add question section visibility */
+  .MuiBox-root {
+    margin-bottom: 16px !important;
+    padding: 16px !important;
+  }
+  
+  /* Ensure the add question section is at the bottom */
+  .MuiCardContent-root > .MuiBox-root:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 16px !important;
+  }
+  
+  /* Make the input container more visible */
+  .MuiBox-root .MuiBox-root {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 4px !important;
+    padding: 8px !important;
+  }
+  
+  [data-mui-color-scheme="dark"] .MuiBox-root .MuiBox-root {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
 }
