@@ -36,3 +36,141 @@
     transform: rotate(360deg);
   }
 }
+
+/* Responsive design improvements */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Mobile-first responsive design */
+@media (max-width: 600px) {
+  /* Ensure proper touch targets on mobile */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve text readability on small screens */
+  p, h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Prevent horizontal scrolling */
+  .MuiCard-root {
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+}
+
+/* Tablet and desktop improvements */
+@media (min-width: 601px) {
+  .MuiCard-root {
+    margin: auto !important;
+  }
+}
+
+/* Ensure smooth transitions */
+.MuiBox-root {
+  transition: all 0.3s ease;
+}
+
+/* Improve focus states for accessibility */
+button:focus,
+input:focus {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+
+/* Dark mode improvements */
+[data-mui-color-scheme="dark"] {
+  background-color: #121212;
+}
+
+/* Loading state improvements */
+.loading-text {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Question card improvements */
+.question-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.question-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Input field improvements */
+.MuiInput-root {
+  transition: border-color 0.2s ease;
+}
+
+.MuiInput-root:focus-within {
+  border-color: #1976d2;
+}
+
+/* Button improvements */
+.MuiButton-root {
+  transition: all 0.2s ease;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.MuiButton-root:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Theme toggle improvements */
+.MuiSwitch-root {
+  transition: all 0.2s ease;
+}
+
+/* Responsive typography */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  p {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 1.4 !important;
+  }
+}
+
+@media (min-width: 769px) {
+  h2 {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+}
