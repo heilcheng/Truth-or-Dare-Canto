@@ -14,7 +14,7 @@ const MONGODB_URI = "YOUR_MONGODB_CONNECTION_STRING";
 
 // Full set of original questions for in-memory storage
 let inMemoryQuestions = [
-  "你覺得男朋友唔浪漫算唔算一種罪？",
+"你覺得男朋友唔浪漫算唔算一種罪？",
 "分享一次你「至少做一件離譜的事」經歷",
 "分享三個無血緣關係，而確實係最重要嘅「緊急聯絡人」。",
 "咩情況下你會想「可不可以沒禮拜六沒禮拜日又一週」。",
@@ -28,7 +28,6 @@ let inMemoryQuestions = [
 "Name someone that you want him/her to 'Call Me by Your Name',",
 "Name a 'Somebody That I Used to Know',",
 "分享最上一個「無題時想起的人」，點解會想起？",
-Aren't you 'still haven't find what I look for'
 "分享一個同你有關但你其實唔知「到底發生過什麼事」嘅情況？",
 "你覺得自己仲會有幾多個「下一位前度」？",
 "你覺得「老派約會」尚有無必要？",
